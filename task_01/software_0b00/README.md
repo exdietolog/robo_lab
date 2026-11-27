@@ -1,16 +1,12 @@
 # software 0b00
 
-Лабораторная работа №1: модель робота-манипулятора, прямая и обратная кинематика.
+Software in robotics practical task template `0b00`.
 
-## Сборка и запуск
+## Building
 
-Нужны **Godot 4.7.2 с поддержкой .NET (Mono)** и **.NET 8 SDK**. Проверьте, что `dotnet --list-sdks` показывает версию `8.x`. При первой сборке могут загружаться пакеты с NuGet.org.
+[Godot](https://godotengine.org) of major version 4 is required with `.NET` support.
 
-1. Импортируйте `software_0b00/project.godot` в Godot 4.7.2 Mono.
-2. Нажмите **F5**, чтобы собрать проект и запустить демонстрацию трёхосевого робота (`Main.tscn`).
-3. Для четырёхосевого робота откройте `TaskMain.tscn` и нажмите **F6**. Эта сцена добавляет камеру и освещение к `Prefab/Task/TaskScene.tscn`. При запуске робот следует за движущейся целью.
-
-Чтобы проверить кинематику вручную, откройте `Prefab/Task/TaskScene.tscn`. В 3D-редакторе измените положение `TaskTarget` или его поворот вокруг локальной оси Z: робот должен следовать за достижимой целью. Для проверки прямой кинематики временно очистите поле `Target` у `TaskRobotControl`, затем меняйте углы `A`, `B`, `C`, `D` у `TaskRobot`. Верните ссылку на `TaskTarget`, чтобы снова включить обратную кинематику.
+Import `project.godot` with the editor and run.
 
 ## License
 
