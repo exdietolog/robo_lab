@@ -1,0 +1,6 @@
+# Local editor downloads and generated submission archives.
+/Godot_v*/
+/*.zip
+
+# Godot project caches.
+.godot/
