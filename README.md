@@ -2,25 +2,22 @@
 
 Лабораторные работы по дисциплине «Программирование мехатронных и робототехнических систем» (МГТУ «СТАНКИН», кафедра робототехники и мехатроники). Все работы выполняются в движке **Godot** на языке **C#**: вы строите модель манипулятора, решаете для неё задачи кинематики и пишете программы движения.
 
-Исходные шаблоны и методички были подготовлены для Godot 4.1 / .NET 6. В этом репозитории они переведены на **Godot 4.7.2 .NET** и **.NET 8**. Методички поправлены там, где интерфейс или имена изменились (см. [ниже](#что-изменилось-по-сравнению-с-методичками-для-godot-41)).
+**ЛР 1** использует исходный шаблон для **Godot 4.1.1 Mono / .NET 6**. Проекты **ЛР 3 и 4** перенесены на **Godot 4.7.2 .NET / .NET 8**. PDF-методички сохранены в редакции для 4.7.2, поэтому в методичке ЛР 1 названия некоторых кнопок отличаются от Godot 4.1.1.
 
 ## Что установить
 
-| Что | Версия | Где взять |
+| Лабораторная | Godot с поддержкой .NET | .NET SDK |
 |---|---|---|
-| Godot с поддержкой .NET | 4.7.2 (сборка **.NET**, не обычная) | [godotengine.org/download](https://godotengine.org/download) |
-| .NET SDK | 8.0 или новее (подходит и 10.0) | [dotnet.microsoft.com/download](https://dotnet.microsoft.com/en-us/download) |
-| Редактор кода (по желанию) | VS Code с расширениями [godot-tools](https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools) и [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp), или Visual Studio | — |
+| ЛР 1 | [4.1.1 Mono](https://godotengine.org/download/archive/4.1.1-stable/) | [6.0](https://dotnet.microsoft.com/download/dotnet/6.0) |
+| ЛР 3 и 4 | [4.7.2 .NET](https://godotengine.org/download/archive/4.7.2-stable/) | [8.0](https://dotnet.microsoft.com/download/dotnet/8.0) |
 
-Проверка SDK: `dotnet --list-sdks` должен показать версию `8.x` или выше. Обычная сборка Godot (без .NET) проекты **не откроет**: C#-скрипты не будут найдены.
-
-Linux / WSL (Ubuntu 24.04): `sudo apt install dotnet-sdk-10.0`, архив `Godot_v4.7.2-stable_mono_linux_x86_64.zip` распаковать в любую папку и запускать файл `Godot_v4.7.2-stable_mono_linux.x86_64`.
+Проверьте установленные SDK командой `dotnet --list-sdks`. Обычная сборка Godot без поддержки .NET не подходит: она не сможет запустить C#-скрипты. Для редактирования кода можно использовать Visual Studio или VS Code с расширениями [godot-tools](https://marketplace.visualstudio.com/items?itemName=geequlim.godot-tools) и [C#](https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp).
 
 ## Как открыть лабораторную
 
 1. Запустите Godot, в менеджере проектов нажмите **Import** и выберите `project.godot` в папке проекта (например, `task_03/software_0b10/project.godot`).
-2. Оставьте флажок **Edit Now** и нажмите **Import**.
-3. Соберите C#-код: кнопка **Build Project** (молоток справа вверху) или **Alt+B**. При первой сборке пакеты Godot скачиваются с NuGet — нужен интернет. Ошибки сборки видны во вкладке **MSBuild** внизу.
+2. Для **ЛР 1** выберите `task_01/software_0b00/project.godot` в Godot 4.1.1 и нажмите **Import & Edit**. В Godot 4.7.2 для **ЛР 3 и 4** оставьте флажок **Edit Now** и нажмите **Import**.
+3. Соберите C#-код кнопкой сборки в редакторе (молоток справа вверху). При первой сборке пакеты Godot скачиваются с NuGet — нужен интернет. Ошибки сборки видны во вкладке **MSBuild** внизу.
 4. **F5** — запуск главной сцены проекта, **F6** — запуск открытой сейчас сцены.
 
 Без редактора: `godot --path task_03/software_0b10` (запуск) или `dotnet build "software 0b10.csproj"` в папке проекта (только сборка).
@@ -29,7 +26,7 @@ Linux / WSL (Ubuntu 24.04): `sudo apt install dotnet-sdk-10.0`, архив `Godo
 
 | Папка | Что внутри |
 |---|---|
-| [`task_01/`](task_01/) | ЛР 1: проект `software_0b00` (Godot 4.7.2), методичка, [`general.pdf`](task_01/general.pdf) — общие материалы курса |
+| [`task_01/`](task_01/) | ЛР 1: чистый шаблон `software_0b00` (Godot 4.1.1 / .NET 6), методичка и [`general.pdf`](task_01/general.pdf) |
 | [`task_01_original/`](task_01_original/) | ЛР 1 в исходном виде (Godot 4.1 / .NET 6) — для сравнения |
 | [`task_03/`](task_03/) | ЛР 3: шаблон `software_0b10` (задания не выполнены), методичка |
 | [`task_04/`](task_04/) | ЛР 4: шаблон `software_0b11` (задания не выполнены), методичка |
@@ -78,6 +75,8 @@ Linux / WSL (Ubuntu 24.04): `sudo apt install dotnet-sdk-10.0`, архив `Godo
 
 ## Что изменилось по сравнению с методичками для Godot 4.1
 
+Таблица объясняет различия между версиями редактора и редакциями PDF. Проект ЛР 1 оставлен на Godot 4.1.1; для него ориентируйтесь на левую колонку в вопросах интерфейса и сборки.
+
 | Было (4.1) | Стало (4.7.2) |
 |---|---|
 | Godot 4.1 Mono, .NET 6 (`net6.0`) | Godot 4.7.2 .NET, .NET 8 (`net8.0`), `Godot.NET.Sdk/4.7.2` |
@@ -93,7 +92,7 @@ Linux / WSL (Ubuntu 24.04): `sudo apt install dotnet-sdk-10.0`, архив `Godo
 
 ## Частые проблемы
 
-- **«.NET Sdk not found» / скрипты не находятся** — установлена обычная сборка Godot или нет .NET SDK 8+. Проверьте `dotnet --list-sdks`; если раньше стоял 32-битный .NET, удалите его.
+- **«.NET Sdk not found» / скрипты не находятся** — проверьте, что запущена .NET-сборка Godot и установлен SDK для нужной лабораторной (`dotnet --list-sdks`): .NET 6 для ЛР 1, .NET 8 для ЛР 3 и 4.
 - **Сборка долго «висит» в первый раз** — скачиваются NuGet-пакеты Godot; нужен доступ к nuget.org.
 - **После изменения `[Export]`-полей в C# они не появились в инспекторе** — пересоберите проект (Alt+B) и переоткройте сцену.
 - **Linux / WSL без видеокарты** — Godot рисует на процессоре (llvmpipe), это медленно, но работает. Можно попробовать `--rendering-driver opengl3`.
