@@ -1,0 +1,3 @@
+# Keep the empty starter folder, but ignore student work inside it.
+/Task/*
+!/Task/.gitkeep
